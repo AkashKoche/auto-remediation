@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auto-remediation-ingress
+spec:
+  rules:
+  - host: remediation.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: auto-remediation-service
+            port:
+              number: 80

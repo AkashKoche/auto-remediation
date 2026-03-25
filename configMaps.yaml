@@ -1,0 +1,10 @@
+apiVerison: v1
+kind: ConfigMap
+metadata:
+  name: remediation-config
+data:
+  rules.json: |
+    {
+      "HighCPUUsage": "restart_service",
+      "DiskFull": "clear_disk"
+    }
