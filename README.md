@@ -28,25 +28,25 @@ EXPOSE API
 
 CONFIGURE ALERTMANAGER WEBHOOK
 
-receivers:
-  - name: "auto-remediation"
-    webhook_configs:
-      - url: "http://<NODE-IP>:30007/alert"
+    receivers:
+      - name: "auto-remediation"
+        webhook_configs:
+          - url: "http://<NODE-IP>:30007/alert"
 
 TEST END-TO-END
 
-curl -X POST http://<NODE-IP>:30007/alert \
--H "Content-Type: application/json" \
--d '{
-  "alerts": [
-    {
-      "labels": {
-        "alertname": "HighCPUUsage",
-        "instance": "pod-1"
-      }
-    }
-  ]
-}'
+    curl -X POST http://<NODE-IP>:30007/alert \
+    -H "Content-Type: application/json" \
+    -d '{
+      "alerts": [
+        {
+          "labels": {
+            "alertname": "HighCPUUsage",
+            "instance": "pod-1"
+          }
+        }
+      ]
+    }'
 
 APPLY LIVENESS & READINESS PROBES
 
