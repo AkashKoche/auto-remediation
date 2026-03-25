@@ -28,14 +28,14 @@
 
 # CONFIGURE ALERTMANAGER WEBHOOK
 
-    receivers:
+receivers:
   - name: "auto-remediation"
     webhook_configs:
       - url: "http://<NODE-IP>:30007/alert"
 
 # TEST END-TO-END
 
-    curl -X POST http://<NODE-IP>:30007/alert \
+curl -X POST http://<NODE-IP>:30007/alert \
 -H "Content-Type: application/json" \
 -d '{
   "alerts": [
