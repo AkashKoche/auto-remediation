@@ -1,0 +1,4 @@
+receivers:
+  - name: "auto-remediation"
+    webhook_configs:
+      - url: "http://192.168.59.100:30007/alert"
