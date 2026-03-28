@@ -16,7 +16,12 @@ def trigger_test(alert_name, target_instance):
     }
     print(f"Testing: {alert_name} on {target_instance}")
 
-    response = requests.post(URL, json=payload)
+    headers = {
+            "X-Auth-Token": "secret-key-123",
+            "Content-Type": "application/json"
+    }
+
+    response = requests.post(URL, json=payload, headers=headers)
 
     print(f"Status Code: {response.status_code}")
     print(f"Raw Content: '{response.text}'")

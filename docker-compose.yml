@@ -1,0 +1,36 @@
+services:
+  # 1. Your Auto-Remediation API
+  api:
+    build: .
+    image: auto-remediation:v3
+    container_name: remediation-api
+    ports:
+      - "8000:8000"
+    environment:
+      - REMEDIATION_TOKEN=secret-key-123
+    networks:
+      - monitoring
+
+  # 2. Prometheus (The Scraper)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  # 3. Grafana (The Visualizer)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
