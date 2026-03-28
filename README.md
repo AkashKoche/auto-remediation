@@ -46,7 +46,7 @@ Prerequisites
 
 1. Launch the Stack
 
-    docker-compose up -d
+        docker-compose up -d
 
 2. Verify Endpoints
 
@@ -60,7 +60,7 @@ Prerequisites
 
 3. Run End-to-End Test
 
-    python3 final_test.py
+        python3 final_test.py
 
 📊 SRE Metrics Tracked
 Metric	Type	Description
